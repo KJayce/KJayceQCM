@@ -1,6 +1,17 @@
+/* css: postions base: static: let the other properties of this elements decide of his position
+                       absolute:
+                       relative:
+                       fixed:
+
+
+*/
+
+
+
+
 body {
     background: url("Problem.jpg") no-repeat scroll center;
-    -webkit-background-size: 100%;
+  -webkit-background-size: 100%;
   -moz-background-size: 100%;
   -o-background-size: 100%;
   background-size: 100%;
@@ -12,6 +23,12 @@ body {
 }
 
 h1 {
-  text-align: center;
   position: relative;
+}
+
+.pure-radio {
+  display: inline-block;
+}
+.radio{
+  display: inline-block;
 }

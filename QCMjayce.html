@@ -5,64 +5,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="typesheet" type="text/css" href="QCM.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous"> 
+    <link rel="stylesheet" type="text/css" href="QCM.css">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css" integrity="sha384-UQiGfs9ICog+LwheBSRCt1o5cbyKIHbwjWscjemyBMT9YCUMZffs6UqUTd0hObXD"
+        crossorigin="anonymous">
     <title></title>
 </head>
 
 <body>
-    <form class="jumbotron form-horizontal" id="Techsupp-form" method="POST" action="QCMjayce.php" role="form">
+    <form class="pure-form pure-form-stacked" id="QCMform" method="POST" action="QCMjayce.php" role="form">
         <h1>QCM Sheet</h1>
 
         <h2>Personal infos</h2>
-        <div class="form-group">
-            <label  class="control-label col-sm-2" for="fname">Full Name</label>
-            <input class="col-sm-10" type="text" name="fname" value="">
-        </div>
 
-        <div class="form-group" >
-            <label  class="control-label col-sm-2" for="email"> E-Mail Adress </label>
-            <input class="col-sm-10" type="text" name="email" value="">
-        </div>
+        <label class="control-label col-sm-2" for="fname">Full Name</label>
+        <input class="col-sm-10" type="text" name="fname" value="">
+        <span class="pure-form-message">This is a required field.</span>
 
-        <div class="form-group" >
-            <label  class="control-label col-sm-2" for="bdate">Birth Date</label>
-            <input class="col-sm-10" type="date" name="bdate" value="">
-        </div>
 
-<label class="control-label col-sm-2" for="Q1"> Question 1 </label>
-<input class="col-sm-10" type="radio" name="Q1" value="">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Email">
+        <span class="pure-form-message">This is a required field.</span>
 
-<label class="control-label col-sm-2" for="Q2"> Question 2</label>
-<input class="col-sm-10" type="radio" name="Q2" value="">
 
-<label class="control-label col-sm-2" for="Q3"> Question 3</label>
-<input class="col-sm-10" type="radio" name="Q3" value="">
 
-<!-- <label class="control-label col-sm-2" for="Q4"> Question 4</label>
-<input class="col-sm-10" type="radio" name="" value="">
+        <label class="control-label col-sm-2" for="bdate">Birth Date</label>
+        <input class="col-sm-10" type="date" name="bdate" value="">
+        <span class="pure-form-message">This is a required field.</span>
 
-<label class="control-label col-sm-2" for="Q5"> Question 5</label>
-<input class="col-sm-10" type="radio" name="" value="">
-
-<label class="control-label col-sm-2" for="Q6"> Question 6</label>
-<input class="col-sm-10" type="radio" name="" value="">
-
-<label class="control-label col-sm-2" for="Q7"> Question 7</label>
-<input class="col-sm-10" type="radio" name="" value="">
-
-<label class="control-label col-sm-2" for="Q8"> Question 8</label>
-<input class="col-sm-10" type="radio" name="" value="">
-
-<label class="control-label col-sm-2" for="Q9"> Question 9</label>
-<input class="col-sm-10" type="radio" name="" value="">
-
-<label class="control-label col-sm-2" for="Q10"> Question 10</label>
-<input class="col-sm-10" type="radio" name="" value="">
-
-<label class="control-label col-sm-2" for="Q11"> Question 11</label>
-<input class="col-sm-10" type="radio" name="" value=""> -->
+        <label class="pure-radio" for="Q1"> Question 1 </label>
+        <input class="form-inline" type="radio" name="Q1" value="ans1_1">ans1<br>
+        <input class="form-inline" type="radio" name="Q1" value="ans1_2">ans2<br>
+        <input class="form-inline" type="radio" name="Q1" value="ans1_3">ans3<br>
+        <br>
+        <label class="pure-radio" for="Q2"> Question 2</label>
+        <input class="form-inline" type="radio" name="Q2" value="ans2_1">ans1<br>
+        <input class="form-inline" type="radio" name="Q2" value="ans2_2">ans2<br>
+        <br>
+        <label class="pure-radio" for="Q3"> Question 3</label>
+        <input class="form-inline" type="radio" name="Q3" value="ans3_1">ans1<br>
+        <br>
+        <!-- <label class="pure-radio" for="Q4"> Question 4</label>
+<input class="form-inline" type="radio" name="" value="">
+    <br>
+<label class="pure-radio" for="Q5"> Question 5</label>
+<input class="form-inline" type="radio" name="" value="">
+    <br>
+<label class="pure-radio" for="Q6"> Question 6</label>
+<input class="form-inline" type="radio" name="" value="">
+    <br>
+<label class="pure-radio" for="Q7"> Question 7</label>
+<input class="form-inline" type="radio" name="" value="">
+    <br>
+<label class="pure-radio" for="Q8"> Question 8</label>
+<input class="form-inline" type="radio" name="" value="">
+    <br>
+<label class="pure-radio" for="Q9"> Question 9</label>
+<input class="form-inline" type="radio" name="" value="">
+    <br>
+<label class="cpure-radio for="Q10"> Question 10</label>
+<input class="form-inline" type="radio" name="" value="">
+    <br>
+<label class="cpure-radio for="Q11"> Question 11</label>
+<input class="form-inline" type="radio" name="" value=""> -->
 
     </form>
 
