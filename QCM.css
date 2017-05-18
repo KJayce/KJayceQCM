@@ -5,6 +5,9 @@
 
 
 */
+.prob{
+  z-index: -100;
+}
 
 .pi{  
   display: inline-block;
@@ -13,7 +16,6 @@
 }
 
 body {
-    background: url("Problem.jpg") no-repeat scroll center;
   -webkit-background-size: 100%;
   -moz-background-size: 100%;
   -o-background-size: 100%;
