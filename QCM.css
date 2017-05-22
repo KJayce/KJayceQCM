@@ -1,0 +1,38 @@
+/* css: postions base: static: let the other properties of this elements decide of his position
+                        absolute:
+                        relative:
+                        fixed:
+
+
+*/
+.prob{
+  z-index: -100;
+}
+
+.pi{  
+  display: inline-block;
+  position: relative;
+  
+}
+
+body {
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  max-width: 1366px;
+  display:inline;
+  padding: 0 !important;
+  margin: 0;
+}
+
+h1 {
+  position: relative;
+}
+
+.pure-radio {
+  display: inline-block;
+}
+.radio{
+  display: inline-block;
+}
