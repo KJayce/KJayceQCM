@@ -1,3 +1,33 @@
+<?php session_start(); ?>
+
+<?php
+        $errLog=" ";
+
+        if(isset($_POST['infoSub'])){
+                if( isset($_POST['fName']) && !empty($_POST['fName']) && isset($_POST['sName']) && !empty($_POST['sName']) && isset($_POST['bDate']) && !empty($_POST['bDate']) && isset($_POST['email']) && !empty($_POST['email'])){
+                
+
+                $_POST['fName'] = trim($_POST['fName']);
+                $_POST['fName'] = filter_var($_POST['fName'], FILTER_SANITIZE_STRING);
+
+                $_POST['sName'] = trim($_POST['sName']);
+                $_POST['sName'] = filter_var($_POST['sName'], FILTER_SANITIZE_STRING);
+
+                $_POST['bDate'] = preg_replace("([^0-9/])", "([^0-9-])", $_POST['bDate']);
+                $_POST['email'] = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+                
+                $_SESSION['fName'] = $_POST['fName'];
+                $_SESSION['sName'] = $_POST['sName'];
+                $_SESSION['bDate'] = $_POST['bDate'];
+                $_SESSION['email'] = $_POST['email'];
+
+
+                }else{
+                        $errLog= "Required fields must be filled";
+                }
+        }
+        ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,7 +42,7 @@
 </head>
 
 <body>
-    <!-- <img class="prob" src="Problem.jpg"> -->
+
     <div class="panel panel-primary text-center">
         <div class="panel-heading">QCM</div>
         <div class="panel-body">
@@ -20,42 +50,55 @@
         </div>
     </div>
     <section class="container-fluid">
-        <form class="form-inline">
+        <form class="form-group" form="pInfos"method="POST" action="QCM.php">
             <section class="pi">
-                <label for="name">Name</label>
-                <input class="form-control" type="text" name="name" placeholder="Enter name here...">
+                <label for="fName">Name</label>
+                <input class="form-control" type="text" name="fName" placeholder="Enter name here...">
 
-                <label for="surname">Surname</label>
-                <input class="form-control" type="text" name="surname" placeholder="Enter surname here...">
+                <label for="sName">Surname</label>
+                <input class="form-control" type="text" name="sName" placeholder="Enter surname here...">
 
-                <label for="bdate">Birthdate</label>
-                <input class="form-control" type="date" name="bdate" value=""><br>
+                <label for="bDate">Birthdate</label>
+                <input class="form-control" type="date" name="bDate" value=""><br>
 
                 <label for="email">E-mail Address</label>
                 <input class="form-control" type="text" name="email" value="">
+
+                <input class="btn-success" type="submit" name="infoSub" value="Send">
             </section>
     </section>
     </form>
 
-    <form class="container-fluid">
-        <section class="container-fluid">
+    
+
+    <?php if(isset($_POST['infoSub'])): ?>
+
+    <div class="panel panel-primary text-center">
+        <div class="panel-heading">QCM</div>
+        <div class="panel-body">
+            Choose Wisely!
+        </div>
+    </div>
+
+    <form class="container-fluid" form="QX" method="POST" action="Ans.php">
+        <section class="Questions">
             <label for="Q1"> What's the brand with a mustached plummer?</label><br>
-            <input class="" type="radio" name="A11" value="">Sega<br>
-            <input class="" type="radio" name="A12" value="">Nintendo<br>
-            <input class="" type="radio" name="A13" value="">Sony<br>
-            <input class="" type="radio" name="A14" value="">SquareSoft<br>
+            <input class="" type="radio" name="Q1" value="11">Sega<br>
+            <input class="" type="radio" name="Q1" value="12">Nintendo<br>
+            <input class="" type="radio" name="Q1" value="13">Sony<br>
+            <input class="" type="radio" name="Q1" value="14">SquareSoft<br>
 
             <label for="Q2"> In wich year was the PS1 released?</label><br>
-            <input class="" type="radio" name="21" value="">1994<br>
-            <input class="" type="radio" name="22" value="">1986<br>
-            <input class="" type="radio" name="23" value="">2000<br>
-            <input class="" type="radio" name="24" value="">1998<br>
+            <input class="" type="radio" name="Q2" value="21">1994<br>
+            <input class="" type="radio" name="Q2" value="22">1986<br>
+            <input class="" type="radio" name="Q2" value="23">2000<br>
+            <input class="" type="radio" name="Q2" value="24">1998<br>
 
             <label for="Q3"> What is to this day the most sold console in history?</label><br>
-            <input class="" type="radio" name="31" value="">Super Nintendo<br>
-            <input class="" type="radio" name="32" value="">Xbox 360<br>
-            <input class="" type="radio" name="33" value="">Jaguar<br>
-            <input class="" type="radio" name="34" value="">Playstation 2<br>
+            <input class="" type="radio" name="Q3" value="31">Super Nintendo<br>
+            <input class="" type="radio" name="Q3" value="32">Xbox 360<br>
+            <input class="" type="radio" name="Q3" value="33">Jaguar<br>
+            <input class="" type="radio" name="Q3" value="34">Playstation 2<br>
 
 <!--
             <label for="Q4"> Question 4</label><br>
@@ -103,7 +146,9 @@
 -->
 
         </section>
-        <button class="button btn-success btn-lg" type="submit"> submit </button>
+        <button class="button btn-success btn-lg" type="submit" name="submit"> submit </button>
+        </form>
+        <?php endif; ?>
 </body>
 
 </html>
