@@ -1,12 +1,19 @@
 <?php session_start(); ?>
 
 <?php
-        $errLog=" ";
+        $errLog="";
+        $formVal="";
 
-        if(isset($_POST['infoSub'])){
-                if( isset($_POST['fName']) && !empty($_POST['fName']) && isset($_POST['sName']) && !empty($_POST['sName']) && isset($_POST['bDate']) && !empty($_POST['bDate']) && isset($_POST['email']) && !empty($_POST['email'])){
+            if(isset($_POST['infoSub'])){
+
+                if( 
+                    isset($_POST['fName']) && !empty($_POST['fName']) && 
+                    isset($_POST['sName']) && !empty($_POST['sName']) && 
+                    isset($_POST['bDate']) && !empty($_POST['bDate']) && 
+                    isset($_POST['email']) && !empty($_POST['email'])
+                ){
                 
-
+                
                 $_POST['fName'] = trim($_POST['fName']);
                 $_POST['fName'] = filter_var($_POST['fName'], FILTER_SANITIZE_STRING);
 
@@ -20,12 +27,13 @@
                 $_SESSION['sName'] = $_POST['sName'];
                 $_SESSION['bDate'] = $_POST['bDate'];
                 $_SESSION['email'] = $_POST['email'];
-
+                $formVal=true;
 
                 }else{
                         $errLog= "Required fields must be filled";
+                        $formVal=false;
                 }
-        }
+            }
         ?>
 
 <!DOCTYPE html>
@@ -42,13 +50,15 @@
 </head>
 
 <body>
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <script link="app.js"></script>
 
-    <div class="panel panel-primary text-center">
-        <div class="panel-heading">QCM</div>
-        <div class="panel-body">
-            Choose Wisely!
-        </div>
-    </div>
+    <?php if ($formVal == false) : ?>
+
+    
     <section class="container-fluid">
         <form class="form-group" form="pInfos"method="POST" action="QCM.php">
             <section class="pi">
@@ -59,19 +69,22 @@
                 <input class="form-control" type="text" name="sName" placeholder="Enter surname here...">
 
                 <label for="bDate">Birthdate</label>
-                <input class="form-control" type="date" name="bDate" value=""><br>
+                <input data-provide="datepicker" class="form-control" type="date" name="bDate" value=""><br>
 
                 <label for="email">E-mail Address</label>
                 <input class="form-control" type="text" name="email" value="">
 
                 <input class="btn-success" type="submit" name="infoSub" value="Send">
             </section>
+            </form>
     </section>
-    </form>
+    <?php endif; ?>
 
     
 
-    <?php if(isset($_POST['infoSub'])): ?>
+    
+
+    <?php if ($formVal == true) : ?>
 
     <div class="panel panel-primary text-center">
         <div class="panel-heading">QCM</div>
@@ -146,9 +159,15 @@
 -->
 
         </section>
-        <button class="button btn-success btn-lg" type="submit" name="submit"> submit </button>
+
+        <input class="button btn-success btn-lg" type="submit" name="formSub" value="Submit">
+
         </form>
-        <?php endif; ?>
+
+        <?php endif; ?> <?php if($errLog !== ""):?>
+        <div class="alert">
+            <?php echo $errLog;?>
+        </div> <?php endif; ?>
 </body>
 
 </html>
